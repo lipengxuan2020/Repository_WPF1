@@ -1,0 +1,21 @@
+﻿<!-- App.xaml
+     
+     Description:
+        Setting up initial files and resources for WPF application.
+    
+     Attributes:
+        StartupUri - designate start up window
+        xmlns - WPF application default namespace
+        xmls:x - WPF application extended namespace and named it "x"
+        <Application.Resources></Application.Resource> - System resources define section
+    -->
+
+<Application x:Class="Project1.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Project1"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
