@@ -36,7 +36,7 @@
 
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="Button">
+                    <ControlTemplate TargetType="{x:Type Button}">
                         <Grid x:Name="grid"
                               MinHeight="36"
                               MinWidth="36"
@@ -130,11 +130,13 @@
 
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="Button">
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <!-- Set a grid area -->
                         <Grid x:Name="grid"
                               Height="36"
                               Width="36"
                               Background="{TemplateBinding Background}">
+                            <!-- Draw -->
                             <Path x:Name="icon"
                                   Height="15"
                                   Width="15"
@@ -150,9 +152,12 @@
                                         <RectangleGeometry Rect="7 0 1 15"/>
                                     </GeometryGroup>
                                 </Path.Data>
+                                <!-- Two transformation -->
                                 <Path.LayoutTransform>
                                     <TransformGroup>
+                                        <!-- Scale transformation -->
                                         <ScaleTransform x:Name="IconScale"/>
+                                        <!--Rotation transformation -->
                                         <RotateTransform x:Name="IconRotate" Angle="45"/>
                                     </TransformGroup>
                                 </Path.LayoutTransform>
@@ -229,10 +234,10 @@
                                 <Border Grid.Row="0" Background="{StaticResource NonCS_light}" BorderBrush="{StaticResource CSNonCS_seperator}" BorderThickness="0 0 0 1">
                                     <!-- Section contents -->
                                     <DockPanel LastChildFill="False">
-                                        <TextBlock DockPanel.Dock="Left" VerticalAlignment="Center" Text=" My Application" FontSize="21" FontFamily="Microsoft YaHei UI" FontWeight="Light"/>
+                                        <TextBlock DockPanel.Dock="Left" Margin="32 0 0 0" VerticalAlignment="Center" Text=" My Application" FontSize="25" FontFamily="Microsoft YaHei UI" FontWeight="Light"/>
                                         <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" VerticalAlignment="Top">
-                                            <Button Style="{StaticResource MiniBtn}"/>
-                                            <Button Style="{StaticResource CloseBtn}"/>
+                                            <Button Style="{StaticResource MiniBtn}" Command="{Binding MinimiseCommand}"/>
+                                            <Button Style="{StaticResource CloseBtn}" Command="{Binding CloseCommand}"/>
                                         </StackPanel>
                                     </DockPanel>
                                 </Border>
@@ -253,5 +258,55 @@
         <WindowChrome CaptionHeight="66" CornerRadius="0" ResizeBorderThickness="0"/>
     </WindowChrome.WindowChrome>
 
-    <Grid></Grid>
+    <Grid Height="396" Width="430" HorizontalAlignment="Center">
+        <Border Padding="36 32 36 0">
+            <Grid>
+                <StackPanel VerticalAlignment="Top">
+                    <Path Fill="Blue">
+                        <Path.Data>
+                            <GeometryGroup FillRule="Nonzero">
+                                <RectangleGeometry Rect="0 0 5 38"/>
+                                <RectangleGeometry Rect="10 10 2 18"/>
+                                <RectangleGeometry Rect="20 0 1 38"/>
+                                <RectangleGeometry Rect="30 10 4 18"/>
+                                <RectangleGeometry Rect="40 0 3 38"/>
+                            </GeometryGroup>
+                        </Path.Data>
+                    </Path>
+
+                    <StackPanel Margin="0 70 0 0">
+                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Tag="Email" TextBlock.FontFamily="Microsoft YaHei UI" TextBlock.FontSize="">
+                            <TextBox.Style>
+                                <Style TargetType="{x:Type TextBox}">
+                                    <Setter Property="FontSize" Value="18"/>
+                                    <Setter Property="Padding" Value="10"/>
+                                    <Setter Property="Margin" Value="0 5 0 5"/>
+                                    <Setter Property="BorderBrush" Value="#55290736"/>
+                                    <Setter Property="BorderThickness" Value="1"/>
+                                    <Setter Property="Background" Value=""/>
+                                    <Setter Property="Foreground" Value=""/>
+
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                                                <Grid>
+                                                    <Border x:Name="border"
+                                                            BorderBrush=""
+                                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                                            Background="{TemplateBinding Background}"
+                                                            SnapsToDevicePixels="True">
+                                                        <ScrollViewer x:Name=""
+                                                    </Border>
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </TextBox.Style>
+                        </TextBox>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
 </Window>
